@@ -25,8 +25,9 @@ function Validators.isFiniteNumber(value: unknown): boolean
 	if type(value) ~= "number" then
 		return false
 	end
-	local n = value :: number
-	return n == n and n ~= math.huge and n ~= -math.huge
+	-- selene 0.32's Roblox std predates math.isfinite (engine release 701).
+	-- selene: allow(incorrect_standard_library_use)
+	return math.isfinite(value :: number)
 end
 
 --- An integer within [min, max] inclusive.

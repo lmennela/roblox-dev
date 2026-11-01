@@ -1,5 +1,5 @@
 ---
-description: Run a structured security, data-safety, performance and typing review of Roblox/Luau code using the roblox-reviewer agent. Use when asked to review Roblox code, audit a game for exploits or leaks, or before shipping a system.
+description: Run a structured security, data-safety, performance, typing, platform-currency and UI/input review of Roblox/Luau code using the roblox-reviewer agent. Use when asked to review Roblox code, audit a game for exploits or leaks, or before shipping a system.
 disable-model-invocation: true
 ---
 
@@ -15,8 +15,8 @@ system name, or "everything"). If no target is given, review
    remote handlers, DataStore/persistence code, per-frame loops, then
    everything else.
 2. Launch the **roblox-reviewer** agent on the target. Pass it the file list
-   and tell it which of the four lenses to emphasize if the user asked for a
-   specific one (security / data / performance / typing).
+   and tell it which of the six lenses to emphasize if the user asked for a
+   specific one (security / data / performance / typing / currency / UI-input).
 3. Present findings as a table sorted by severity:
 
    | # | Severity | File:Line | Finding | Fix |
@@ -35,3 +35,5 @@ system name, or "everything"). If no target is given, review
   validation wrapper defined elsewhere), say exactly that and list the file
   you'd need.
 - An empty or short findings table for clean code is a valid, good result.
+- Say what a static review cannot confirm and which playtest would (see
+  roblox-testing). Never report something as tested if it was only read.

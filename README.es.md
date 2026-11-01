@@ -8,6 +8,8 @@ y tipado `--!strict` por defecto.
 
 *Read in English: [README.md](README.md)*
 
+Fork de [ivar-anon/roblox-dev](https://github.com/ivar-anon/roblox-dev) de Ivar (MIT), actualizado con la documentación oficial de Roblox. Ver el [changelog](CHANGELOG.md).
+
 ## Por qué
 
 Claude escribe buen Lua. Pero Roblox no es Lua: es un entorno de red hostil
@@ -23,14 +25,14 @@ automáticamente cada vez que trabajás en código Luau.
 ## Instalación
 
 ```
-/plugin marketplace add ivar-anon/roblox-dev
+/plugin marketplace add lmennela/roblox-dev
 /plugin install roblox-dev@roblox-dev
 ```
 
 O probalo por una sesión:
 
 ```bash
-git clone https://github.com/ivar-anon/roblox-dev
+git clone https://github.com/lmennela/roblox-dev
 claude --plugin-dir ./roblox-dev
 ```
 
@@ -46,7 +48,10 @@ claude --plugin-dir ./roblox-dev
 | **luau-strict-typing** | `--!strict` por defecto, idiomas de narrowing de `Instance?`, declaraciones adelantadas, payloads de remotes tipados, el idioma de tipado OOP con metatables, arreglos de errores comunes |
 | **roblox-architecture** | Bootstrap con un solo punto de entrada (init/start en dos fases), ModuleScripts en vez de `_G`, remotes como frontera de API tipada, managers con CollectionService, tabla de decisión de dónde vive el código |
 | **roblox-ui** | Layout responsivo con Scale, vocabulario de animación con TweenService, clipping/fades con CanvasGroup, encuadre de ViewportFrames por bounding box, trampas de partículas, cheatsheet de game feel |
-| **roblox-testing** | Cheat remotes con gate de servidor (y por qué la barra de comandos de Studio te miente), diseño núcleo-puro/cáscara-fina, specs con TestEZ, checklist de playtest multi-cliente |
+| **roblox-testing** | Cheat remotes con gate de servidor (y por qué la barra de comandos de Studio te miente), diseño núcleo-puro/cáscara-fina, specs con Jest Roblox, checklist de playtest multi-cliente |
+| **roblox-input** | Input Action System (contextos, acciones, bindings), Input Action Manager, táctil/mando/teclado/control de TV, etiquetas y trampas |
+| **roblox-server-authority** | Cuándo adoptar el modelo, predicción y rollback, callbacks de simulación, depuración, qué sigue Pending |
+| **roblox-studio-workflow** | Script Sync vs Rojo, Studio MCP oficial, el ciclo de evidencia editar → sync → play → consola → captura |
 
 ### Comandos
 
@@ -56,13 +61,13 @@ claude --plugin-dir ./roblox-dev
   completa: tipos compartidos + módulo de servidor validado + controlador de
   cliente + registro de remotes + cheats de QA. Nunca un solo archivo
   inseguro.
-- **`/roblox-dev:review [objetivo]`** — auditoría estructurada (seguridad /
-  datos / performance / tipado) con hallazgos ordenados por severidad.
+- **`/roblox-dev:review [objetivo]`** — auditoría estructurada (seguridad / datos / performance /
+  tipado / vigencia / UI-input) con hallazgos ordenados por severidad.
 
 ### Agente
 
 - **roblox-reviewer** — un auditor de solo lectura que Claude puede lanzar
-  por su cuenta después de tocar código de gameplay, con las mismas cuatro
+  por su cuenta después de tocar código de gameplay, con seis
   lentes.
 
 ## Ejemplo
@@ -70,7 +75,7 @@ claude --plugin-dir ./roblox-dev
 La carpeta [`examples/safe-remote`](examples/safe-remote) contiene
 `SafeRemote.luau` — un wrapper de remotes con tipado estricto que implementa
 la escalera de validación del plugin (rate limiting por token bucket,
-validadores a prueba de NaN/infinito) — con su spec de TestEZ. Muestra el
+validadores a prueba de NaN/infinito) — con su spec de TestEZ (se conserva como muestra heredada; las suites nuevas deben seguir la skill roblox-testing). Muestra el
 estilo de código hacia el que empujan todas las skills.
 
 ## Filosofía

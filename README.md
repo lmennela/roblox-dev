@@ -7,6 +7,8 @@ memory, and `--!strict` typing by default.
 
 *Leído en español: [README.es.md](README.es.md)*
 
+Fork of [ivar-anon/roblox-dev](https://github.com/ivar-anon/roblox-dev) by Ivar (MIT), updated against the official Roblox docs. See the [changelog](CHANGELOG.md).
+
 ## Why
 
 Claude is good at Lua. Roblox is not Lua — it is a hostile networked
@@ -22,14 +24,14 @@ whenever you work on Luau code.
 ## Install
 
 ```
-/plugin marketplace add ivar-anon/roblox-dev
+/plugin marketplace add lmennela/roblox-dev
 /plugin install roblox-dev@roblox-dev
 ```
 
 Or try it for one session:
 
 ```bash
-git clone https://github.com/ivar-anon/roblox-dev
+git clone https://github.com/lmennela/roblox-dev
 claude --plugin-dir ./roblox-dev
 ```
 
@@ -45,7 +47,10 @@ claude --plugin-dir ./roblox-dev
 | **luau-strict-typing** | `--!strict` by default, `Instance?` narrowing idioms, forward declarations, typed remote payloads, the metatable OOP typing idiom, common error fixes |
 | **roblox-architecture** | One-entry-point bootstrap (two-phase init/start), ModuleScripts over `_G`, remotes as a typed API boundary, CollectionService managers, a decision table for where code lives |
 | **roblox-ui** | Scale-based responsive layout, TweenService animation vocabulary, CanvasGroup clipping/fades, ViewportFrame framing via bounding boxes, particle gotchas, game-feel cheatsheet |
-| **roblox-testing** | Gated cheat remotes (and why the Studio command bar lies to you), pure-core/thin-shell design, TestEZ specs, multi-client playtest checklist |
+| **roblox-testing** | Gated cheat remotes (and why the Studio command bar lies to you), pure-core/thin-shell design, Jest Roblox specs, multi-client playtest checklist |
+| **roblox-input** | Input Action System (contexts, actions, bindings), Input Action Manager, touch/gamepad/keyboard/TV remote, labels and pitfalls |
+| **roblox-server-authority** | When to adopt the model, prediction and rollback, simulation callbacks, debugging, what's still Pending |
+| **roblox-studio-workflow** | Script Sync vs Rojo, official Studio MCP, the edit → sync → play → console → capture evidence loop |
 
 ### Commands
 
@@ -54,20 +59,20 @@ claude --plugin-dir ./roblox-dev
 - **`/roblox-dev:new-system <Name>`** — generate a complete vertical slice:
   shared types + validated server module + client controller + remote
   registration + QA cheat entries. Never just one insecure file.
-- **`/roblox-dev:review [target]`** — structured audit (security / data /
-  performance / typing) with severity-ranked findings.
+- **`/roblox-dev:review [target]`** — structured audit (security / data / performance /
+  typing / currency / UI-input) with severity-ranked findings.
 
 ### Agent
 
 - **roblox-reviewer** — a read-only auditor Claude can launch on its own
-  after touching gameplay code, checking the same four lenses.
+  after touching gameplay code, checking six lenses.
 
 ## Example
 
 The [`examples/safe-remote`](examples/safe-remote) folder contains
 `SafeRemote.luau` — a strict-typed remote wrapper implementing the plugin's
 validation ladder (token-bucket rate limiting, NaN/infinity-safe validators)
-— with its TestEZ spec. It shows the code style every skill pushes toward.
+— with its TestEZ spec (kept as a legacy sample; new suites should follow the roblox-testing skill). It shows the code style every skill pushes toward.
 
 ## Philosophy
 

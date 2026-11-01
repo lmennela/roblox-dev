@@ -28,6 +28,9 @@ in **English or Spanish** are equally welcome, for both code and docs.
    Selene is configured (`selene.toml`) for local linting — run
    `selene examples` before you push.
 
+5. **Cite and date.** Knowledge skills end with their sources and a last-verified
+   date. Label Beta and Pending features; check `deprecated.md` before citing an API.
+
 ## Workflow
 
 1. Fork, branch from `main`.
@@ -46,5 +49,5 @@ Luau and watch which skills activate.
 
 ## Conduct
 
-Be kind, assume good faith, review the code not the person. Reports to the
-maintainer's email in `plugin.json`.
+Be kind, assume good faith, review the code not the person. Reports through a
+GitHub issue.
